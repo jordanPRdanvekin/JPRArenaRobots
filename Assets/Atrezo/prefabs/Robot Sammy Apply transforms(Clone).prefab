@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6878005456744150607}
   - component: {fileID: 4201574443001640852}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Robot Sammy Apply transforms(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30,10 +30,6 @@ Transform:
   m_LocalScale: {x: 0.22, y: 0.22, z: 0.22}
   m_ConstrainProportionsScale: 1
   m_Children:
-  - {fileID: 7725274439118684043}
-  - {fileID: 6419059509794804475}
-  - {fileID: 3553114185080619659}
-  - {fileID: 535993687860526084}
   - {fileID: 4777973043612716388}
   - {fileID: 4508473786440992220}
   m_Father: {fileID: 0}
@@ -61,7 +57,7 @@ GameObject:
   - component: {fileID: 6419059509794804475}
   - component: {fileID: 8963579274737026645}
   - component: {fileID: 829036629621662125}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Alarm Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -76,12 +72,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 870363180860398638}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.27093118, y: 0.5603165, z: -0.009277957}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.14654765, y: 0.24581072, z: -0.009279294}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 6878005456744150607}
+  m_Father: {fileID: 4777973043612716388}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8963579274737026645
 MeshFilter:
@@ -145,7 +141,7 @@ GameObject:
   - component: {fileID: 4508473786440992220}
   - component: {fileID: 6389946915054864172}
   - component: {fileID: 1287928333129040700}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Eje Rueda
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -160,7 +156,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1570430346454083628}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.12682551, y: 0.13775124, z: 0.00059274584}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -229,7 +225,7 @@ GameObject:
   - component: {fileID: 4777973043612716388}
   - component: {fileID: 8451750450825285036}
   - component: {fileID: 4891958044408388185}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cuerpo Inferior
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -248,7 +244,11 @@ Transform:
   m_LocalPosition: {x: -0.12438356, y: 0.3145058, z: 0.0000014583123}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 7725274439118684043}
+  - {fileID: 6419059509794804475}
+  - {fileID: 3553114185080619659}
+  - {fileID: 535993687860526084}
   m_Father: {fileID: 6878005456744150607}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8451750450825285036
@@ -312,7 +312,7 @@ GameObject:
   - component: {fileID: 7725274439118684043}
   - component: {fileID: 7427973585712592051}
   - component: {fileID: 5156709962708750781}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Alarm Cover
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -327,12 +327,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3416846103992715009}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.2594779, y: 0.56323904, z: -0.0010432109}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.13509431, y: 0.24873325, z: -0.0010446581}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 6878005456744150607}
+  m_Father: {fileID: 4777973043612716388}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &7427973585712592051
 MeshFilter:
@@ -395,7 +395,7 @@ GameObject:
   - component: {fileID: 3553114185080619659}
   - component: {fileID: 1828124608527961847}
   - component: {fileID: 28814339644186976}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Alerones
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -410,12 +410,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4786595665413944019}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.028996944, y: 0.67945504, z: 0.0000013544077}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.15338051, y: 0.36494926, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 6878005456744150607}
+  m_Father: {fileID: 4777973043612716388}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1828124608527961847
 MeshFilter:
@@ -479,7 +479,7 @@ GameObject:
   - component: {fileID: 535993687860526084}
   - component: {fileID: 1020585356732641384}
   - component: {fileID: 373350170112709565}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BODY
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -494,12 +494,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5886540054177189386}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.062272727, y: 0.5572295, z: 0.0000013275312}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.06211083, y: 0.24272373, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 6878005456744150607}
+  m_Father: {fileID: 4777973043612716388}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1020585356732641384
 MeshFilter:
@@ -564,7 +564,7 @@ GameObject:
   - component: {fileID: 2498344389934385462}
   - component: {fileID: 6999192093045570401}
   - component: {fileID: 7590152023263543208}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Rueda
   m_TagString: Untagged
   m_Icon: {fileID: 0}

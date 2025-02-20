@@ -9,8 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7527692580675232852}
-  - component: {fileID: -118324622435481112}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: RobotRetoJPR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25,27 +24,15 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 60007761271039920}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.7087232, z: -0, w: 0.70548666}
-  m_LocalPosition: {x: -1.1470406, y: 0.06270336, z: 0.17834552}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.026290713, y: 0.026290718, z: 0.026290717}
   m_ConstrainProportionsScale: 1
   m_Children:
-  - {fileID: 441201005684862569}
   - {fileID: 1147578808866141870}
+  - {fileID: 441201005684862569}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 90.262, z: 0}
---- !u!114 &-118324622435481112
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 60007761271039920}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cac9c6af6d3156b4b86387433951689e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1 &1973257575726181829
 GameObject:
   m_ObjectHideFlags: 0
@@ -57,7 +44,7 @@ GameObject:
   - component: {fileID: 5703996229815122530}
   - component: {fileID: 2196635081449093688}
   - component: {fileID: 7538812875225667077}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -144,7 +131,7 @@ GameObject:
   - component: {fileID: 570370249370153041}
   - component: {fileID: 5459131719956939451}
   - component: {fileID: 8305575993555601757}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: CANON1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -228,7 +215,7 @@ GameObject:
   - component: {fileID: 2397941463862327386}
   - component: {fileID: 4758900191594575010}
   - component: {fileID: 2976878109724831941}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: CARVASA1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -313,7 +300,7 @@ GameObject:
   - component: {fileID: 4406562658469748974}
   - component: {fileID: 5315260419116881211}
   - component: {fileID: 1552768231326304373}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: patas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -398,7 +385,7 @@ GameObject:
   - component: {fileID: 5787448459433980274}
   - component: {fileID: 1626210179730474456}
   - component: {fileID: 418957356132181143}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -481,7 +468,7 @@ GameObject:
   - component: {fileID: 7204939863796849859}
   - component: {fileID: 5907578724860557007}
   - component: {fileID: 8841901211982391903}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: canon12
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -565,7 +552,9 @@ GameObject:
   - component: {fileID: 441201005684862569}
   - component: {fileID: 7136450584458832574}
   - component: {fileID: 468691673524031815}
-  m_Layer: 0
+  - component: {fileID: 5524473811824993415}
+  - component: {fileID: 1151398355200252393}
+  m_Layer: 3
   m_Name: base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -580,9 +569,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6954742128938938521}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: 0.036104746, y: 1.3335989, z: 0}
-  m_LocalScale: {x: 257.00497, y: 257.00497, z: 257.00497}
+  m_LocalRotation: {x: -0.70705634, y: 0.008453517, z: 0.008453636, w: 0.7070562}
+  m_LocalPosition: {x: 0.03609375, y: 1.333599, z: -0.00086408237}
+  m_LocalScale: {x: 257.005, y: 257.00494, z: 257.0049}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4406562658469748974}
@@ -638,6 +627,39 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &5524473811824993415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6954742128938938521}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cac9c6af6d3156b4b86387433951689e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!65 &1151398355200252393
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6954742128938938521}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.0069962447, y: 0.01, z: 0.011805066}
+  m_Center: {x: 0.000006854482, y: -1.8017367e-14, z: 0.0092395665}
 --- !u!1 &7055537218803172680
 GameObject:
   m_ObjectHideFlags: 0
@@ -649,7 +671,7 @@ GameObject:
   - component: {fileID: 7724581082025680204}
   - component: {fileID: 8891132698442074613}
   - component: {fileID: 1084620278124169589}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -736,7 +758,7 @@ GameObject:
   - component: {fileID: 3919362133251607873}
   - component: {fileID: 1995617476510764776}
   - component: {fileID: 2194480279901107450}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -823,7 +845,9 @@ GameObject:
   - component: {fileID: 1365055714379285766}
   - component: {fileID: 9051629817668980295}
   - component: {fileID: 4018058232759209475}
-  m_Layer: 0
+  - component: {fileID: 6134952535974316942}
+  - component: {fileID: 2451655391576019915}
+  m_Layer: 3
   m_Name: RUEDA
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -838,13 +862,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8785292180341141777}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.000000021899883, y: 0.0000000033605343, z: 0.087155715, w: 0.9961947}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 99.99999, y: 99.99999, z: 25.332487}
+  m_LocalRotation: {x: 0, y: 0.011955196, z: 0, w: 0.99992853}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 100, y: 100, z: 25.332487}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7527692580675232852}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 1.37, z: 0}
 --- !u!33 &1365055714379285766
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -910,3 +934,56 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5603da647005a214a9a8a55f793d649f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxImpulse: 2
+  accelerationRate: 2
+  decelerationRate: 2
+  turnSpeed: 100
+  maxSpeed: 10
+--- !u!54 &6134952535974316942
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8785292180341141777}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 20
+  m_CollisionDetection: 0
+--- !u!135 &2451655391576019915
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8785292180341141777}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.015373747
+  m_Center: {x: 0.000109798726, y: -0.0000000037236543, z: -0.000003308989}
