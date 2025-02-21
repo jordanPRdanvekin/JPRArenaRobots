@@ -10,6 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6878005456744150607}
   - component: {fileID: 4201574443001640852}
+  - component: {fileID: 2792410162984008214}
+  - component: {fileID: 5286354530839418175}
+  - component: {fileID: 2119037100879600749}
   m_Layer: 7
   m_Name: Robot Sammy Apply transforms(Clone)
   m_TagString: Untagged
@@ -25,15 +28,15 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 789601618464156805}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.7117936, z: -0, w: 0.70238864}
-  m_LocalPosition: {x: -0.9509958, y: 0.009177834, z: 0.14011382}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.22, y: 0.22, z: 0.22}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 4777973043612716388}
   - {fileID: 4508473786440992220}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 90.762, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!114 &4201574443001640852
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -46,6 +49,76 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f98381d025688f34eac3f04bf77398f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!195 &2792410162984008214
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 789601618464156805}
+  m_Enabled: 1
+  m_AgentTypeID: -1372625422
+  m_Radius: 0.39
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 0.94
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!65 &5286354530839418175
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 789601618464156805}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.66, y: 0.78, z: 0.64}
+  m_Center: {x: 0, y: 0.52, z: 0}
+--- !u!54 &2119037100879600749
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 789601618464156805}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 68
+  m_CollisionDetection: 0
 --- !u!1 &870363180860398638
 GameObject:
   m_ObjectHideFlags: 0
