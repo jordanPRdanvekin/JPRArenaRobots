@@ -553,7 +553,6 @@ GameObject:
   - component: {fileID: 251888674152659194}
   - component: {fileID: 1529247404957125479}
   - component: {fileID: 7996728152357676558}
-  - component: {fileID: 342362727521990176}
   m_Layer: 0
   m_Name: '''''RUEDA'''''
   m_TagString: Untagged
@@ -624,22 +623,6 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &342362727521990176
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6613952918539303149}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5603da647005a214a9a8a55f793d649f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fuerzaMov: 5
-  rotVel: 100
-  desfase: 2
-  rbrueda: {fileID: 1529247404957125479}
 --- !u!1 &6954742128938938521
 GameObject:
   m_ObjectHideFlags: 0
