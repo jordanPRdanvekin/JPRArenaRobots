@@ -29,8 +29,9 @@ Transform:
   m_LocalScale: {x: 0.026290713, y: 0.026290718, z: 0.026290717}
   m_ConstrainProportionsScale: 1
   m_Children:
-  - {fileID: 1147578808866141870}
   - {fileID: 441201005684862569}
+  - {fileID: 1147578808866141870}
+  - {fileID: 251888674152659194}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1 &1973257575726181829
@@ -386,7 +387,7 @@ GameObject:
   - component: {fileID: 1626210179730474456}
   - component: {fileID: 418957356132181143}
   m_Layer: 3
-  m_Name: Cube.003
+  m_Name: controlcamara
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -541,6 +542,104 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &6613952918539303149
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 251888674152659194}
+  - component: {fileID: 1529247404957125479}
+  - component: {fileID: 7996728152357676558}
+  - component: {fileID: 342362727521990176}
+  m_Layer: 0
+  m_Name: '''''RUEDA'''''
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &251888674152659194
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6613952918539303149}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 2.31, z: -0.26}
+  m_LocalScale: {x: 7.44, y: 7.44, z: 7.44}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 7527692580675232852}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &1529247404957125479
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6613952918539303149}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 136
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!135 &7996728152357676558
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6613952918539303149}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &342362727521990176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6613952918539303149}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5603da647005a214a9a8a55f793d649f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fuerzaMov: 5
+  rotVel: 100
+  desfase: 2
+  rbrueda: {fileID: 1529247404957125479}
 --- !u!1 &6954742128938938521
 GameObject:
   m_ObjectHideFlags: 0
@@ -639,6 +738,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cac9c6af6d3156b4b86387433951689e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rueda: {fileID: 0}
+  altura: 1
+  suavizado: 0.1
 --- !u!65 &1151398355200252393
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -652,7 +754,7 @@ BoxCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
@@ -844,8 +946,6 @@ GameObject:
   - component: {fileID: 1147578808866141870}
   - component: {fileID: 1365055714379285766}
   - component: {fileID: 9051629817668980295}
-  - component: {fileID: 4018058232759209475}
-  - component: {fileID: 6134952535974316942}
   - component: {fileID: 2451655391576019915}
   m_Layer: 3
   m_Name: RUEDA
@@ -862,9 +962,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8785292180341141777}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0.011955196, z: 0, w: 0.99992853}
+  m_LocalRotation: {x: -0, y: 0.01195523, z: 0.000000020137605, w: 0.9999286}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 100, y: 100, z: 25.332487}
+  m_LocalScale: {x: 100.000015, y: 99.999954, z: 25.33248}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7527692580675232852}
@@ -922,50 +1022,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &4018058232759209475
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8785292180341141777}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5603da647005a214a9a8a55f793d649f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxImpulse: 2
-  accelerationRate: 2
-  decelerationRate: 2
-  turnSpeed: 100
-  maxSpeed: 10
---- !u!54 &6134952535974316942
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8785292180341141777}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 20
-  m_CollisionDetection: 0
 --- !u!135 &2451655391576019915
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -979,7 +1035,7 @@ SphereCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0

@@ -1,5 +1,5 @@
 using UnityEngine;
-using LeanTween;
+
 
 /// <summary>
 /// Hace que el objeto flotante persiga a la rueda con un ligero desfase usando LeanTween.
