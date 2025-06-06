@@ -22,13 +22,6 @@ public class BallMovement : MonoBehaviour
             Destroy(gameObject);
             
         }
-        if (!other.CompareTag("Enemy"))
-        {
-            Debug.Log("Destroy my enemy");
-            Destroy(other.gameObject);
-            Destroy(gameObject);
-
-        }
     }
     void MovementBall()
     {
