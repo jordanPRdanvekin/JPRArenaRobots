@@ -34485,7 +34485,7 @@ Transform:
   m_GameObject: {fileID: 6368212745215438003}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.989, y: 2.646, z: -1.419}
+  m_LocalPosition: {x: -1.989, y: 3.2, z: -1.419}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -39323,7 +39323,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bad03375943eed541bfe07ab8ff14cd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  state: 0
   velocity: 10
+  maxScale: 3
   dire: {x: 0, y: 0, z: 0}
   enemyLayer:
     serializedVersion: 2
@@ -39336,6 +39338,14 @@ MonoBehaviour:
   searchInterval: 0.25
   mergePowerUp: 1
   friendAttraction: 1
+  shrinkFactorOnBounce: 0.75
+  enemyDisintegrateForce: 10
+  enemyDisintegrateRotationForce: 10
+  enemyDisintegrateShrinkDuration: 1
+  allowImpactDuringDisintegration: 0
+  explosionParticlePrefab: {fileID: 4538498223193156777, guid: d40cdaf100873ed45b3dcc0cfecb2837,
+    type: 3}
+  explosionParticleLifetime: 2
 --- !u!54 &5325149576571051139
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -39361,7 +39371,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 1
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 4
   m_CollisionDetection: 0
 --- !u!1 &6377166942951341473
 GameObject:
