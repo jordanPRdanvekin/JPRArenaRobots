@@ -2,7 +2,7 @@
 - Project name: JPRArenaRobots
 - Unity version: Unity 2022.3.55f1
 - Active game object:
-  - Name: Robot Sammy Apply transforms(Clone)
-  - Tag: Untagged
-  - Layer: enemigo
+  - Name: jugador
+  - Tag: Player
+  - Layer: jugador
 <!-- UNITY CODE ASSIST INSTRUCTIONS END -->
