@@ -1,93 +1,81 @@
 using UnityEngine;
 using UnityEngine.AI;
-using System.Collections;
+using System.Collections; // Necesario para Coroutines
 
 public class EnemyBehavior : MonoBehaviour
 {
     [Header("Referencias Principales")]
     public NavMeshAgent agent;
     public Transform player;
-    public GameObject gameOverCanvas; // Arrastra aquí el Canvas de Game Over desde la jerarquía
+    // public GameObject gameOverCanvas; // <-- YA NO NECESITAMOS ESTO. Puedes borrar la línea.
+    private GameController gameController; // <-- AÑADIR ESTA LÍNEA
 
-    // Máquina de Estados interna
+    // ... (El resto de tus variables de estado y patrulla permanecen igual) ...
     private enum State { Patrullando, Descansando, Persiguiendo, Buscando }
     private State currentState;
-
     [Header("Configuración de Patrulla")]
     public float radioDePatrulla = 20f;
-    public float tiempoDeMovimiento = 10f; // Segundos que se mueve antes de descansar
-    public float tiempoDeDescanso = 3f;  // Segundos que "respira"
-
+    public float tiempoDeMovimiento = 10f;
+    public float tiempoDeDescanso = 3f;
     private Vector3 puntoDeDestino;
     private bool destinoFijado;
     private float temporizadorDeEstado;
-
-    // --- NUEVAS VARIABLES PARA PATRULLAJE CÍCLICO ---
     [Header("Configuración de Retorno al Origen")]
-    [Tooltip("Cada cuántos segundos el enemigo intentará volver a su punto de partida si no está persiguiendo al jugador.")]
     public float tiempoParaRegresar = 50f;
-
     private Vector3 posicionOriginal;
     private float temporizadorDeRegreso;
-    // --- FIN DE NUEVAS VARIABLES ---
-
     [Header("Configuración de Detección")]
-    public float radioDeEscucha = 3f; // Radio para detectar al jugador muy cerca, sin necesidad de verlo.
+    public float radioDeEscucha = 3f;
     public float radioDeVision = 15f;
     [Range(0, 360)]
     public float anguloDeVision = 90f;
-    public LayerMask capaDelJugador; // Se usa para que la física solo detecte al jugador por su CAPA (Layer).
-    public LayerMask capaDeObstaculos; // Se usa para que el Raycast de visión choque con paredes.
-
+    public LayerMask capaDelJugador;
+    public LayerMask capaDeObstaculos;
     private bool puedeVerAlJugador;
     private Vector3 ultimaPosicionConocidaDelJugador;
-
     [Header("Configuración de Persecución")]
-    public float tiempoDeBusqueda = 20f; // Segundos que busca al jugador tras perderlo de vista
+    public float tiempoDeBusqueda = 20f;
+
+    [Header("Configuración de Impacto del Jugador")]
+    public float dispersionForce = 500f; // Fuerza para dispersar las partes del jugador
+    public float rotationForce = 100f; // Fuerza de rotación para las partes del jugador
+    public float dispersionDuration = 1.5f; // Tiempo que las partes están en dispersión antes de congelarse
+
 
     void Start()
     {
-        // Obtener componentes automáticamente si no se asignan en el inspector
-        if (agent == null)
-            agent = GetComponent<NavMeshAgent>();
-
+        if (agent == null) agent = GetComponent<NavMeshAgent>();
         agent.stoppingDistance = 0f;
 
-        // Encontrar al jugador por su Tag si no se asigna
-        if (player == null)
-            player = GameObject.FindGameObjectWithTag("Player").transform;
+        if (player == null) player = GameObject.FindGameObjectWithTag("Player").transform;
 
-        if (gameOverCanvas != null)
-            gameOverCanvas.SetActive(false);
+        // Buscamos el GameController en la escena al iniciar.
+        gameController = FindObjectOfType<GameController>(); // <-- AÑADIR ESTA LÍNEA
+        if (gameController == null) // <-- AÑADIR ESTA COMPROBACIÓN
+        {
+            Debug.LogError("¡ERROR! No se encuentra un GameController en la escena. El enemigo no puede reportar la derrota.");
+            this.enabled = false;
+        }
 
-        // --- INICIALIZACIÓN DE NUEVAS VARIABLES ---
-        posicionOriginal = transform.position; // Guardamos la posición inicial.
-        temporizadorDeRegreso = tiempoParaRegresar; // Iniciamos el temporizador de regreso.
-        // --- FIN DE INICIALIZACIÓN ---
-
+        posicionOriginal = transform.position;
+        temporizadorDeRegreso = tiempoParaRegresar;
         currentState = State.Patrullando;
         temporizadorDeEstado = tiempoDeMovimiento;
     }
 
+    // ... (Tu Update y todas las funciones de la máquina de estados como ManejarEstados, Patrullar, etc. NO necesitan cambios) ...
     void Update()
     {
         ComprobarCampoDeVision();
         ManejarEstados();
     }
-
-    /// <summary>
-    /// Gestiona la máquina de estados del enemigo, decidiendo si patrulla, persigue, etc.
-    /// Incluye la lógica para regresar a su posición original periódicamente.
-    /// </summary>
     private void ManejarEstados()
     {
-        // Lógica de retorno cíclico: si no está persiguiendo, avanza el temporizador para volver a la base.
         if (currentState != State.Persiguiendo && currentState != State.Buscando)
         {
             temporizadorDeRegreso -= Time.deltaTime;
             if (temporizadorDeRegreso <= 0f)
             {
-                // Vuelve a la base y reinicia los temporizadores.
                 currentState = State.Patrullando;
                 agent.SetDestination(posicionOriginal);
                 destinoFijado = true;
@@ -96,15 +84,12 @@ public class EnemyBehavior : MonoBehaviour
                 return;
             }
         }
-
-        // La detección del jugador siempre tiene la máxima prioridad.
         if (puedeVerAlJugador)
         {
             if (currentState != State.Persiguiendo)
             {
                 currentState = State.Persiguiendo;
                 temporizadorDeEstado = tiempoDeBusqueda;
-                // Si ve al jugador, el temporizador de regreso se reinicia.
                 temporizadorDeRegreso = tiempoParaRegresar;
             }
         }
@@ -115,40 +100,24 @@ public class EnemyBehavior : MonoBehaviour
                 currentState = State.Buscando;
             }
         }
-
         switch (currentState)
         {
-            case State.Patrullando:
-                Patrullar();
-                break;
-            case State.Descansando:
-                Descansar();
-                break;
-            case State.Persiguiendo:
-                Perseguir();
-                break;
-            case State.Buscando:
-                Buscar();
-                break;
+            case State.Patrullando: Patrullar(); break;
+            case State.Descansando: Descansar(); break;
+            case State.Persiguiendo: Perseguir(); break;
+            case State.Buscando: Buscar(); break;
         }
     }
-
-    /// <summary>
-    /// El enemigo se mueve a un punto aleatorio o espera a llegar a su destino.
-    /// Si se acaba el tiempo de movimiento, pasa a descansar.
-    /// </summary>
     private void Patrullar()
     {
         if (!destinoFijado)
         {
             BuscarNuevoPuntoDePatrulla();
         }
-
         if (agent.hasPath && agent.remainingDistance < 2f)
         {
             destinoFijado = false;
         }
-
         temporizadorDeEstado -= Time.deltaTime;
         if (temporizadorDeEstado <= 0)
         {
@@ -157,10 +126,6 @@ public class EnemyBehavior : MonoBehaviour
             agent.ResetPath();
         }
     }
-
-    /// <summary>
-    /// El enemigo se detiene por un breve período antes de volver a patrullar.
-    /// </summary>
     private void Descansar()
     {
         temporizadorDeEstado -= Time.deltaTime;
@@ -171,23 +136,14 @@ public class EnemyBehavior : MonoBehaviour
             destinoFijado = false;
         }
     }
-
-    /// <summary>
-    /// El enemigo persigue activamente la posición actual del jugador.
-    /// </summary>
     private void Perseguir()
     {
         agent.SetDestination(player.position);
         ultimaPosicionConocidaDelJugador = player.position;
     }
-
-    /// <summary>
-    /// Tras perder de vista al jugador, el enemigo se dirige a la última posición conocida.
-    /// </summary>
     private void Buscar()
     {
         agent.SetDestination(ultimaPosicionConocidaDelJugador);
-
         temporizadorDeEstado -= Time.deltaTime;
         if (temporizadorDeEstado <= 0 || (agent.hasPath && agent.remainingDistance < 1f))
         {
@@ -196,10 +152,6 @@ public class EnemyBehavior : MonoBehaviour
             destinoFijado = false;
         }
     }
-
-    /// <summary>
-    /// Calcula un nuevo punto aleatorio dentro del radio de patrulla y lo asigna como destino.
-    /// </summary>
     private void BuscarNuevoPuntoDePatrulla()
     {
         Vector3 puntoAleatorio = Random.insideUnitSphere * radioDePatrulla;
@@ -212,31 +164,22 @@ public class EnemyBehavior : MonoBehaviour
             destinoFijado = true;
         }
     }
-
-    /// <summary>
-    /// Comprueba si el jugador está dentro del campo de visión o del radio de escucha.
-    /// </summary>
     private void ComprobarCampoDeVision()
     {
-        // Primero comprueba el radio de escucha cercano
         Collider[] collidersEnEscucha = Physics.OverlapSphere(transform.position, radioDeEscucha, capaDelJugador);
         if (collidersEnEscucha.Length > 0)
         {
             puedeVerAlJugador = true;
             return;
         }
-
-        // Si no, comprueba el cono de visión
         Collider[] collidersEnRango = Physics.OverlapSphere(transform.position, radioDeVision, capaDelJugador);
         if (collidersEnRango.Length > 0)
         {
             Transform objetivo = collidersEnRango[0].transform;
             Vector3 direccionHaciaObjetivo = (objetivo.position - transform.position).normalized;
-
             if (Vector3.Angle(transform.forward, direccionHaciaObjetivo) < anguloDeVision / 2)
             {
                 float distanciaHaciaObjetivo = Vector3.Distance(transform.position, objetivo.position);
-                // Lanza un rayo para asegurarse de que no hay obstáculos en medio
                 if (!Physics.Raycast(transform.position, direccionHaciaObjetivo, distanciaHaciaObjetivo, capaDeObstaculos))
                 {
                     puedeVerAlJugador = true;
@@ -244,54 +187,100 @@ public class EnemyBehavior : MonoBehaviour
                 }
             }
         }
-
         puedeVerAlJugador = false;
     }
 
+
     /// <summary>
-    /// Se activa cuando el enemigo toca al jugador. Inicia la secuencia de Game Over.
+    /// Se activa cuando el enemigo toca al jugador. Notifica al GameController y dispersa los hijos del jugador.
     /// </summary>
     private void OnTriggerEnter(Collider other)
     {
+        // Asegurarse de que el objeto que colisionó es el jugador principal (o cualquier parte del jugador con la etiqueta "Player")
         if (other.gameObject.CompareTag("Player"))
         {
-            Debug.Log("¡El enemigo ha tocado al jugador! Iniciando Game Over.");
+            Debug.Log("¡El enemigo ha tocado al jugador! Dispersando las partes del jugador y notificando al GameController.");
 
-            if (gameOverCanvas != null)
-            {
-                gameOverCanvas.SetActive(true);
-            }
-            else
-            {
-                Debug.LogError("¡El Canvas de Game Over no está asignado en el Inspector!");
-            }
-
-            Time.timeScale = 0f; // Pausa el juego
+            // Desactivamos al enemigo para que no pueda provocar múltiples Game Overs.
+            // Esto desactiva su IA y su capacidad de moverse.
             this.enabled = false;
             agent.enabled = false;
+
+            // Iniciar la corrutina para dispersar y congelar al jugador, y luego terminar el juego.
+            StartCoroutine(DisperseAndFreezePlayer());
         }
     }
 
     /// <summary>
-    /// Dibuja los Gizmos en el editor de Unity para visualizar los radios de detección.
+    /// Coroutine para dispersar las partes del jugador, desvincularlas, congelarlas y luego terminar el juego.
     /// </summary>
+    IEnumerator DisperseAndFreezePlayer()
+    {
+        // Encontrar el Rigidbody del jugador principal (si lo tiene) y sus hijos con la etiqueta "Player"
+        // Asumimos que 'player' ya apunta a la raíz del GameObject del jugador.
+        Rigidbody[] playerPartsRbs = player.GetComponentsInChildren<Rigidbody>();
+
+        // Primero, aplicar la fuerza de dispersión y desvincular
+        foreach (Rigidbody rb in playerPartsRbs)
+        {
+            // Solo dispersar si el objeto tiene la etiqueta "Player"
+            if (rb.gameObject.CompareTag("Player"))
+            {
+                // Asegurarse de que el Rigidbody está activo y no es cinemático para poder aplicar fuerzas
+                rb.isKinematic = false;
+                rb.useGravity = true; // Asegurarse de que la gravedad esté activada inicialmente para la dispersión
+
+                // Calcular una dirección aleatoria de dispersión
+                Vector3 randomDirection = Random.onUnitSphere;
+                // Asegura que la fuerza tenga un componente hacia arriba para dar un efecto de "salto"
+                randomDirection.y = Mathf.Abs(randomDirection.y) + 0.5f; // Añade un offset para asegurar movimiento hacia arriba
+                randomDirection.Normalize(); // Normalizar la dirección para que la fuerza sea consistente
+
+                rb.AddForce(randomDirection * dispersionForce, ForceMode.Impulse);
+                rb.AddTorque(Random.insideUnitSphere * rotationForce, ForceMode.Impulse); // Añadir algo de rotación aleatoria
+
+                // ¡Importante! Desvincular la parte del jugador de su padre
+                rb.transform.parent = null;
+            }
+        }
+
+        // Esperar el tiempo de dispersión
+        yield return new WaitForSeconds(dispersionDuration);
+
+        // Después del tiempo de dispersión, congelar las partes
+        foreach (Rigidbody rb in playerPartsRbs)
+        {
+            // Solo congelar si el objeto tiene la etiqueta "Player"
+            if (rb != null && rb.gameObject.CompareTag("Player")) // rb puede ser null si el objeto fue destruido (poco probable aquí)
+            {
+                rb.isKinematic = true; // Congelar el Rigidbody
+                rb.velocity = Vector3.zero; // Detener cualquier movimiento residual
+                rb.angularVelocity = Vector3.zero; // Detener cualquier rotación residual
+                rb.useGravity = false; // Desactivar la gravedad para que floten en el aire
+            }
+        }
+
+        // Notificamos al controlador principal que el juego ha terminado.
+        if (gameController != null)
+        {
+            gameController.LoseGame();
+        }
+    }
+
+    // ... (El resto de tus funciones como OnDrawGizmosSelected no necesitan cambios) ...
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, radioDePatrulla);
-
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, radioDeEscucha);
-
         Gizmos.color = Color.white;
         Gizmos.DrawWireSphere(transform.position, radioDeVision);
-
         Vector3 anguloVisionA = DireccionDesdeAngulo(-anguloDeVision / 2, false);
         Vector3 anguloVisionB = DireccionDesdeAngulo(anguloDeVision / 2, false);
         Gizmos.color = Color.cyan;
         Gizmos.DrawLine(transform.position, transform.position + anguloVisionA * radioDeVision);
         Gizmos.DrawLine(transform.position, transform.position + anguloVisionB * radioDeVision);
-
         if (puedeVerAlJugador)
         {
             Gizmos.color = Color.green;
@@ -303,10 +292,6 @@ public class EnemyBehavior : MonoBehaviour
             Gizmos.DrawLine(transform.position, ultimaPosicionConocidaDelJugador);
         }
     }
-
-    /// <summary>
-    /// Función de utilidad para calcular una dirección a partir de un ángulo.
-    /// </summary>
     private Vector3 DireccionDesdeAngulo(float anguloEnGrados, bool anguloEsGlobal)
     {
         if (!anguloEsGlobal)

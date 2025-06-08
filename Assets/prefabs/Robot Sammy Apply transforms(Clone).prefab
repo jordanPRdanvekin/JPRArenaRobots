@@ -49,23 +49,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 2792410162984008214}
-  player: {fileID: 7527692580675232852, guid: 342daca5dd3025f4ba9ea811c54faab4, type: 3}
-  gameOverCanvas: {fileID: 1988589037473911181, guid: b744c11e43c9d2b42859cc05ca359798,
-    type: 3}
-  radioDePatrulla: 20
+  player: {fileID: 0}
+  radioDePatrulla: 50
   tiempoDeMovimiento: 10
   tiempoDeDescanso: 3
   tiempoParaRegresar: 20
   radioDeEscucha: 2
   radioDeVision: 5
-  anguloDeVision: 50
+  anguloDeVision: 36
   capaDelJugador:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   capaDeObstaculos:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
   tiempoDeBusqueda: 20
+  dispersionForce: 5
+  rotationForce: 5
+  dispersionDuration: 1
 --- !u!195 &2792410162984008214
 NavMeshAgent:
   m_ObjectHideFlags: 0
