@@ -93,7 +93,7 @@ public class energySystem : MonoBehaviour
     {
         if (!infiniteEnergy)
         {
-            energyLabel.text = currentEnergy.ToString("00");
+            energyLabel.text = currentEnergy.ToString("energy = "+"00");
         }
     }
 

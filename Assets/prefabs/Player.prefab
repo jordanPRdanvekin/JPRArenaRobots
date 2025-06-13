@@ -472,12 +472,12 @@ Transform:
   m_GameObject: {fileID: 4347231397519495555}
   serializedVersion: 2
   m_LocalRotation: {x: -0.48215267, y: 0.5172318, z: 0.517232, w: 0.48215267}
-  m_LocalPosition: {x: -0.88, y: -1.2679999, z: 0}
-  m_LocalScale: {x: 96.55747, y: 96.33081, z: 96.41473}
+  m_LocalPosition: {x: -0.036998328, y: -0.20499998, z: 0}
+  m_LocalScale: {x: 96.55746, y: 96.3308, z: 96.41473}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7467735829182385710}
-  m_Father: {fileID: 1673819473393140899}
+  m_Father: {fileID: 2051875089613814389}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3945531193304504293
 MeshFilter:
@@ -554,11 +554,10 @@ Transform:
   m_GameObject: {fileID: 5356446592308232074}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.88, y: 2.34, z: 0}
+  m_LocalPosition: {x: 0, y: 1.005, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 2748877826461908586}
+  m_Children: []
   m_Father: {fileID: 2051875089613814389}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5427533146429261108
@@ -619,7 +618,7 @@ Transform:
   m_GameObject: {fileID: 6086418000732619412}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.9911113, y: 2.3400002, z: -6.666667}
+  m_LocalPosition: {x: 1.1111112, y: 1.0050001, z: -6.666667}
   m_LocalScale: {x: 2.2222223, y: 2.2222223, z: 2.2222223}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -978,6 +977,7 @@ Transform:
   m_LocalScale: {x: 0.45, y: 0.45, z: 0.45}
   m_ConstrainProportionsScale: 1
   m_Children:
+  - {fileID: 2748877826461908586}
   - {fileID: 1673819473393140899}
   - {fileID: 5950553418628729178}
   m_Father: {fileID: 0}
@@ -1001,13 +1001,13 @@ CharacterController:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Height: 3
+  m_Height: 2.7
   m_Radius: 0.6
   m_SlopeLimit: 45
   m_StepOffset: 0.25
   m_SkinWidth: 0.02
   m_MinMoveDistance: 0
-  m_Center: {x: 0, y: 1.08, z: 0}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &4743354669195274605
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1232,8 +1232,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7638d0e2e0e63b46915def1bad9afa6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rightGunSpawn: {x: 0.28, y: 1.05, z: 0.15}
-  leftGunSpawn: {x: -0.28, y: 1.05, z: 0.15}
+  rightGunSpawn: {x: 0.28, y: 0.5, z: 0.2}
+  leftGunSpawn: {x: -0.28, y: 0.5, z: 0.2}
   areaRadius: 18
   enemiesLayer:
     serializedVersion: 2

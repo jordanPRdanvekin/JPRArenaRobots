@@ -629,6 +629,16 @@ PrefabInstance:
       propertyPath: enemiesParent
       value: 
       objectReference: {fileID: 1763226242}
+    - target: {fileID: 7227250590130256476, guid: 089e848592f415b42978005d3eee03d1,
+        type: 3}
+      propertyPath: infinitePowerUpSpawnChance
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 7227250590130256476, guid: 089e848592f415b42978005d3eee03d1,
+        type: 3}
+      propertyPath: fullReloadPowerUpSpawnChance
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 8501421436168468216, guid: 089e848592f415b42978005d3eee03d1,
         type: 3}
       propertyPath: m_Name
